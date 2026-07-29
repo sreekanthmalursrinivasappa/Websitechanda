@@ -7,13 +7,15 @@ const noBtn = document.getElementById("no-btn");
 yesBtn.onclick = () => {
 
 
+    // remember that user interacted
+
     sessionStorage.setItem(
-        "fromQuestionPage",
+        "musicUnlocked",
         "true"
     );
 
 
-    window.location.href = "letter.html";
+    window.location.href="letter.html";
 
 
 };
@@ -22,25 +24,27 @@ yesBtn.onclick = () => {
 
 
 
-function moveButton(){
+function escapeButton(){
 
 
-    const x =
-    Math.random() *
-    (window.innerWidth - noBtn.offsetWidth);
+    const width =
+    window.innerWidth - noBtn.offsetWidth - 20;
 
 
-    const y =
-    Math.random() *
-    (window.innerHeight - noBtn.offsetHeight);
+    const height =
+    window.innerHeight - noBtn.offsetHeight - 20;
 
 
 
     noBtn.style.position="fixed";
 
-    noBtn.style.left=x+"px";
 
-    noBtn.style.top=y+"px";
+    noBtn.style.left =
+    Math.random()*width+"px";
+
+
+    noBtn.style.top =
+    Math.random()*height+"px";
 
 
 }
@@ -49,11 +53,12 @@ function moveButton(){
 
 noBtn.addEventListener(
 "mouseenter",
-moveButton
+escapeButton
 );
+
 
 
 noBtn.addEventListener(
 "touchstart",
-moveButton
+escapeButton
 );

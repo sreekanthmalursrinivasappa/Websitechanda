@@ -1,33 +1,69 @@
 const music = document.getElementById("music");
 
 
-// Music starts only on letter page
 
-window.addEventListener("load", () => {
-
-    music.volume = 0.5;
-
-    music.play()
-    .then(() => {
-
-        console.log("Music playing ❤️");
-
-    })
-    .catch(error => {
-
-        console.log("Autoplay blocked:", error);
-
-    });
+async function startMusic(){
 
 
-});
+    if(
+        sessionStorage.getItem("musicUnlocked")
+        ===
+        "true"
+    ){
+
+
+        music.volume = 0.5;
 
 
 
+        try{
+
+
+            await music.play();
 
 
 
-// Love letter text
+            console.log(
+            "Music playing ❤️"
+            );
+
+
+
+        }
+        catch(error){
+
+
+            console.log(
+            "Autoplay blocked",
+            error
+            );
+
+
+        }
+
+
+
+    }
+
+
+
+}
+
+
+
+
+
+window.addEventListener(
+"load",
+startMusic
+);
+
+
+
+
+
+
+
 
 const message = `
 
@@ -58,7 +94,7 @@ As I always say...
 
 
 
-We're one day closer to getting married Everyday. 💍
+We're one day closer to getting married. 💍
 
 
 
@@ -86,24 +122,21 @@ Forever yours ❤️
 
 
 
-const output = document.getElementById("letter-text");
+const output =
+document.getElementById("letter-text");
+
+
+let index=0;
 
 
 
-let index = 0;
+setTimeout(()=>{
 
 
-
-// Wait for page to settle
-
-setTimeout(() => {
+typeWriter();
 
 
-    typeWriter();
-
-
-}, 1500);
-
+},2000);
 
 
 
@@ -113,19 +146,26 @@ setTimeout(() => {
 function typeWriter(){
 
 
-    if(index < message.length){
+if(index < message.length){
 
 
-        output.innerHTML += message.charAt(index);
+output.innerHTML +=
+message.charAt(index);
 
 
-        index++;
+
+index++;
 
 
-        setTimeout(typeWriter,35);
+
+setTimeout(
+typeWriter,
+35
+);
 
 
-    }
+
+}
 
 
 }

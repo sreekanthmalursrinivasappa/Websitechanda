@@ -242,7 +242,7 @@ function createHearts(){
 
 const message = `
 
-Bangaram ❤️,
+Bangaram,
 
 Every day I miss you a little more.
 
